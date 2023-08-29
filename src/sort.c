@@ -20,7 +20,7 @@ void print_list(linked_list *list, void (*print_function)(void*)) {
     printf("}\n\n"); 
 }
 
-linked_list* create_linked_list() {
+linked_list* create_linked_list(void) {
     linked_list* list = (linked_list*)malloc(sizeof(linked_list));
     if (list == NULL) {
         return NULL;
