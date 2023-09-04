@@ -9,14 +9,16 @@ void print_list(linked_list *list, void (*print_function)(void*)) {
         print_function(cur->data);
         cur = cur->next;
     }
-    for ( ; cur != NULL, cur = cur->next) {
+    for ( ; cur != NULL; cur = cur->next) {
         printf(", ");
         print_function(cur->data);
     }
     printf("]\n{length: %lu, head->data: ", list->size);
-    list->head != NULL ? print_function(list->head->data) : (void)printf("NULL");
+    list->head != NULL ? 
+        print_function(list->head->data) : (void)printf("NULL");
     printf(", tail->data: ");
-    list->tail != NULL ? print_function(list->tail->data) : (void)printf("NULL");
+    list->tail != NULL ?
+        print_function(list->tail->data) : (void)printf("NULL");
     printf("}\n\n"); 
 }
 
@@ -31,9 +33,9 @@ linked_list* create_linked_list(void) {
     return list;
 }
 
-bool insert_in_order(linked_list *list, void *data, int (*cmp)(const void*, const void*)) {
+int insert_in_order(linked_list *list, void *data, int (*cmp)(const void*, const void*)) {
     if (list == NULL) {
-        return false;
+        return 0;
     }
     node *head = list->head;
 
@@ -47,7 +49,7 @@ bool insert_in_order(linked_list *list, void *data, int (*cmp)(const void*, cons
         } else {
             head->prev = n;
         }
-        return true;
+        return 1;
     } else {
         node *current = head;
         int comp2 = cmp(data, current->data);
@@ -61,13 +63,13 @@ bool insert_in_order(linked_list *list, void *data, int (*cmp)(const void*, cons
             new_node->prev = list->tail;
             list->tail->next = new_node;
             list->tail = new_node;
-            return true;
+            return 1;
         } else {
             new_node->next = current;
             new_node->prev = current->prev;
             current->prev = new_node;
             new_node->prev->next = new_node;
-            return true;
+            return 1;
         }
     }
 }

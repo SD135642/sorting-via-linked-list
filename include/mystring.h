@@ -1,4 +1,4 @@
-
+#include <stdlib.h>
 //returns the length of the string passed
 size_t my_strlen(char *src);
 

@@ -22,7 +22,7 @@ static char **copy_args_lowercase(int argc, char **argv) {
     for (int i = 0; i < (argc-1); i++) {
         copy[i] = (char *)malloc((my_strlen(argv[i+1]) + 1) * sizeof(char));
         my_strcpy(copy[i], argv[i+1]);
-        my_strlower(copy[i]);
+        my_str_lower(copy[i]);
     }
     copy[argc-1] = NULL;
     return copy;
